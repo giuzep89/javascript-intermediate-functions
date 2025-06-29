@@ -72,6 +72,9 @@ console.log(typeOfEmail(externalAddress));
 // Ik probeer een anonymous function gewoon om te oefenen
 const checkEmailValidity = function (emailAddress){
      const lastCharacter = emailAddress.charAt(emailAddress.length - 1);
+     // Webstorm suggereert om onderstaande if statement te versimpelen,
+    // maar ik vind het dan een stuk minder duidelijk.
+    //  Voor nu vind ik het zo prima
     if (emailAddress.includes('@')
         && !emailAddress.includes(',')
         && lastCharacter !== '.')
