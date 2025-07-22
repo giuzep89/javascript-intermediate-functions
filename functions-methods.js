@@ -9,7 +9,24 @@
 // getEmailDomain("t.mellink@novi.nl") geeft novi.nl
 // getEmailDomain("a.wiersma@outlook.com") geeft outlook.com
 
+//optie 1
+function getEmailDomain(emailAddress){
+    const splittingPoint = emailAddress.indexOf('@');
+    return emailAddress.substring(splittingPoint + 1);
 
+}
+
+const emailAddress = 'n.eeken@novi-education.nl'
+console.log(getEmailDomain(emailAddress));
+
+// optie 2
+function getEmailDomain2(emailaddress){
+    const parts = emailaddress.split('@');
+    return parts[1];
+}
+
+emailaddress = 'a.wiersma@outlook.com';
+console.log(getEmailDomain2(emailaddress));
 
 
 /* Opdracht  2 */
@@ -20,6 +37,22 @@
 // typeOfEmail("novi.nlaapjesk@outlook.com") geeft geeft "Extern" <-- deze moet het ook doen!
 // typeOfEmail("a.wiersma@outlook.com") geeft "Extern"
 
+function typeOfEmail(emailAddress){
+    if (emailAddress.includes('novi.nl')){
+        return 'Medewerker';
+    } else if (emailAddress.includes('novi-education.nl')){
+        return 'Student';
+    } else {
+        return 'Extern';
+    }
+}
+
+const studentAddress = 'g.rinaldi@novi-education.nl';
+const workersAddress = 'l.a.hoekstra@novi.nl';
+const externalAddress = 'joe_jones@outlook.nl';
+console.log(typeOfEmail(studentAddress));
+console.log(typeOfEmail(workersAddress));
+console.log(typeOfEmail(externalAddress));
 
 
 /* Opdracht  3 */
@@ -34,3 +67,28 @@
 // checkEmailValidity("n.eekenanovi.nl") geeft false - want geen @
 // checkEmailValidity("n.eeken@novinl.") geeft false - want de punt mag niet als laatst
 // checkEmailValidity("tessmellink@novi,nl") geeft false - want er staat een komma in
+
+
+// Ik probeer een anonymous function gewoon om te oefenen
+const checkEmailValidity = function (emailAddress){
+     const lastCharacter = emailAddress.charAt(emailAddress.length - 1);
+     // Webstorm suggereert om onderstaande if statement te versimpelen,
+    // maar ik vind het dan een stuk minder duidelijk.
+    //  Voor nu vind ik het zo prima
+    if (emailAddress.includes('@')
+        && !emailAddress.includes(',')
+        && lastCharacter !== '.')
+    {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+const correctAddress = 'ga.rinaldi@hotmail.com';
+const addressWithComma = 'ga,rinaldi@hotmail.com';
+const addressWithDotAtEnd = 'ga.rinaldi@hotmailcom.'
+
+console.log(checkEmailValidity(correctAddress));
+console.log(checkEmailValidity(addressWithComma));
+console.log(checkEmailValidity(addressWithDotAtEnd));
